@@ -4,14 +4,13 @@ Este projeto foi desenvolvido como parte da disciplina de Desenvolvimento de Sof
 
 O sistema possui duas telas principais:
 
-- **CadastroVIEW** – Tela inicial do sistema, responsável pelo cadastro de produtos.
-- **ListagemVIEW** – Tela que exibe todos os produtos cadastrados no banco de dados.
+- CadastroVIEW – Tela inicial do sistema, responsável pelo cadastro de produtos.
+- ListagemVIEW – Tela que exibe todos os produtos cadastrados no banco de dados.
 
----
 
-## 🔧 Funcionalidades Implementadas
+ Funcionalidades Implementadas
 
-### ✔️ Definição da tela principal
+ Definição da tela principal
 A tela **CadastroVIEW** foi configurada como a primeira tela a ser aberta ao iniciar o sistema.
 
  Cadastro de produtos
@@ -23,7 +22,6 @@ Após o cadastro, mensagens informam se o processo ocorreu com sucesso ou não.
  Listagem de produtos
 Exibe todos os itens cadastrados utilizando a ListagemVIEW.
 
----
 
  Tecnologias utilizadas
 
