@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -19,6 +20,7 @@ public class listagemVIEW extends javax.swing.JFrame {
     public listagemVIEW() {
         initComponents();
         listarProdutos();
+      
     }
 
     /**
@@ -136,17 +138,22 @@ public class listagemVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-        String id = id_produto_venda.getText();
-        
-        ProdutosDAO produtosdao = new ProdutosDAO();
-        
-        //produtosdao.venderProduto(Integer.parseInt(id));
-        listarProdutos();
+        try {
+        int idSelecionado = Integer.parseInt(id_produto_venda.getText());
+
+        ProdutosDAO dao = new ProdutosDAO();
+        dao.venderProduto(idSelecionado);
+
+        JOptionPane.showMessageDialog(null, "Produto vendido com sucesso!");
+        listarProdutos(); // Atualiza tabela
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Digite um ID válido!");
+    }
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        //vendasVIEW vendas = new vendasVIEW(); 
-        //vendas.setVisible(true);
+        vendasVIEW vendas = new vendasVIEW();
+    vendas.setVisible(true);
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -204,7 +211,7 @@ public class listagemVIEW extends javax.swing.JFrame {
     private void listarProdutos(){
       try {
         ProdutosDAO dao = new ProdutosDAO();
-        ArrayList<ProdutosDTO> lista = dao.listarProdutos();
+        ArrayList<ProdutosDTO> lista = dao.listarProdutosAVenda(); // <-- AGORA CERTO
 
         DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
         model.setNumRows(0);
@@ -214,12 +221,12 @@ public class listagemVIEW extends javax.swing.JFrame {
                 p.getId(),
                 p.getNome(),
                 p.getValor(),
-                p.getStatus() // <-- FALTAVA ISSO
+                p.getStatus()
             });
         }
 
     } catch (Exception e) {
-        System.out.println("Erro ao listar: " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Erro ao listar: " + e.getMessage());
     }
     }
 }

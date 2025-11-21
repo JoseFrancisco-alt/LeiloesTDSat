@@ -145,11 +145,11 @@ public class cadastroVIEW extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
        try {
         String nome = cadastroNome.getText();
-        double valor = Double.parseDouble(cadastroValor.getText());
+        int valor = Integer.parseInt(cadastroValor.getText());
 
         ProdutosDTO produto = new ProdutosDTO();
         produto.setNome(nome);
-        produto.setValor(valor);
+        produto.setValor( valor);
         produto.setStatus("A venda");
      
 
